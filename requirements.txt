@@ -1,5 +1,5 @@
 altair==5.3.0
-attrs==24.2.0[2024-08-09 00:30:42.913797]
+attrs==24.2.0
 blinker==1.8.2
 cachetools==5.4.0
 certifi==2024.7.4
