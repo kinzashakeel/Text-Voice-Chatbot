@@ -1,5 +1,5 @@
 altair==5.3.0
-attrs==24.2.0[2024-08-09 00:30:42.913797] 
+attrs==24.2.0[2024-08-09 00:30:42.913797]
 blinker==1.8.2
 cachetools==5.4.0
 certifi==2024.7.4
@@ -8,6 +8,9 @@ click==8.1.7
 google.generativeai
 gitdb==4.0.11
 gitpython==3.1.43
+google-ai-generativelanguage
+google-api-core
+google-auth
 idna==3.7
 jinja2==3.1.4
 jsonschema==4.23.0
@@ -36,6 +39,7 @@ tenacity==8.5.0
 toml==0.10.2
 toolz==0.12.1
 tornado==6.4.1
+tqdm
 typing-extensions==4.12.2
 tzdata==2024.1
 urllib3==2.2.2
