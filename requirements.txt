@@ -11,6 +11,7 @@ gitpython
 google-ai-generativelanguage
 google-api-core
 google-auth
+gtts
 idna
 jinja2
 jsonschema
@@ -24,7 +25,9 @@ pandas
 pillow
 protobuf
 pyarrow
+pyaudio
 pydeck
+pydub
 pygments
 python-dateutil
 pytz
@@ -36,6 +39,7 @@ six
 smmap
 streamlit-chat
 streamlit-webrtc
+speechRecognition
 tenacity
 toml
 toolz
