@@ -25,7 +25,6 @@ pandas
 pillow
 protobuf
 pyarrow
-pyaudio
 pydeck
 pydub
 pygments
