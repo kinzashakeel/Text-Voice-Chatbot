@@ -30,6 +30,7 @@ pydub
 pygments
 python-dateutil
 pytz
+pyttsx3
 referencing
 requests
 rich
