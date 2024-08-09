@@ -35,6 +35,7 @@ rpds-py
 six
 smmap
 streamlit-chat
+streamlit-webrtc
 tenacity
 toml
 toolz
