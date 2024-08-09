@@ -1,5 +1,6 @@
 altair
 attrs
+audio_recorder_streamlit
 blinker
 cachetools
 certifi
