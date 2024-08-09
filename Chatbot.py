@@ -9,13 +9,16 @@ from io import BytesIO
 import requests
 from gtts import gTTS
 import time
-import os
 import base64
 import pyttsx3
 import speech_recognition as sr
 from audio_recorder_streamlit import audio_recorder
+from dotenv import load_dotenv
+import os
 
-GEMINI_API_KEY = 'AIzaSyAKIq-OXzVZC7lTYtnZMdDFqiHDQ_a3L3o'
+load_dotenv()  # Load environment variables from .env file
+
+GEMINI_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GEMINI_API_KEY)
 
 #Model Initiation
