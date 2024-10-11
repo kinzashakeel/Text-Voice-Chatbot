@@ -15,6 +15,9 @@ import speech_recognition as sr
 from audio_recorder_streamlit import audio_recorder
 from dotenv import load_dotenv
 import os
+import openai
+
+openai.api_key = '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' 
 
 
 load_dotenv()  # Load environment variables from .env file
@@ -27,8 +30,23 @@ genai.configure(api_key=GEMINI_API_KEY)
 model= genai.GenerativeModel("gemini-1.5-flash")
 
 def getResponse(user_input):
-    response=model.generate_content(user_input)
-    return response.text
+    #response=model.generate_content(user_input)
+    #return response.text
+    test_messages = []
+
+    system_message = "First ask user about country and language preference for chatting. we have only two options 1. English and 2. Urdu. Whichever language user selects, only reply in that language.You are a mental health support chatbot acting as a friendly therapist and psychologist and you have to do conversation with patients aasking them about their mental health issues, but do not ask too many questions, just ask 2,3 questions and give your detailed solution regarding that specific mental health problem.Don't change language by yourself until user asks to speak in that language.Continue communication in same language.Don't say anything unnecessary. Do not repeat any question again. If user input is in English reply in English, if user input is in Urdu Language then only reply in Urdu Language Otherwise only use English Language by default. Just reply like a human psychologist.Reply detailed satisfactory answers in both languages."
+    test_messages.append({"role": "system", "content": system_message})
+       
+
+    test_messages.append({"role": "system", "content": user_input})
+        #OpenAI Chat Completions
+    response = openai.ChatCompletion.create(
+                model='ft:gpt-4o-mini-2024-07-18:sukkur-iba:mentalhealth:AGTajjiH', #can test it against gpt-3.5-turbo to see difference
+                messages=test_messages,
+                temperature=0,
+                max_tokens=500
+        )
+    return response["choices"][0]["message"]["content"]
 
 import tempfile
 
@@ -111,7 +129,7 @@ def handle_voice_input(speech_text):
 
 def main():
     """Main function to run the Streamlit app."""
-    st.title("Text and Voice Chatbot using Gemini-1.5-flash & Streamlit")
+    st.title("Mental Health Chatbot")
 
     # Initialize session state for chat history and text input
     if 'messages' not in st.session_state:
