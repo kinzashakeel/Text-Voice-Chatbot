@@ -17,8 +17,8 @@ from dotenv import load_dotenv
 import os
 import openai
 
-openai.api_key = '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' 
-
+openai.api_key = os.getenv('OPENAI_API_KEY')
+#openai.api_key='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'
 
 load_dotenv()  # Load environment variables from .env file
 
