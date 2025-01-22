@@ -19,12 +19,13 @@ import openai
 
 load_dotenv()  # Load environment variables from .env file
 
-GEMINI_API_KEY = os.getenv('GOOGLE_API_KEY')
-genai.configure(api_key=GEMINI_API_KEY)
+GEMINI_API_KEY = "AIzaSyAKIq-OXzVZC7lTYtnZMdDFqiHDQ_a3L3o"
+genai.configure(api_key="AIzaSyAKIq-OXzVZC7lTYtnZMdDFqiHDQ_a3L3o")
 #openai.api_key = os.getenv('OPENAI_API_KEY')
 #Model Initiation
 
 model= genai.GenerativeModel("gemini-1.5-flash")
+
 
 def getResponse(user_input):
     response=model.generate_content(user_input + " Answer this acting as a mental health support psychologist")
