@@ -20,7 +20,7 @@ import openai
 with st.sidebar:
     st.header("API Key Configuration")
     # Input field for API key
-    api_key = st.text_input("Enter your OpenAI API Key:", type="password")
+    api_key = st.text_input("Enter your OpenAI API Key:")
     
     # Initialize "api_key" in session state if not already present
     if "api_key" not in st.session_state:
