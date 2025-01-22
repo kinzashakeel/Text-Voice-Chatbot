@@ -27,7 +27,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 model= genai.GenerativeModel("gemini-1.5-flash")
 
 def getResponse(user_input):
-    response=model.generate_content(user_input, "You are acting as a mental health support psychologist")
+    response=model.generate_content(user_input + " Answer this acting as a mental health support psychologist")
     return response.text
     """
     test_messages = []
