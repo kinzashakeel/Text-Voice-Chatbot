@@ -1,4 +1,3 @@
-import google.generativeai as genai
 import streamlit as st
 from streamlit_chat import message
 from streamlit_webrtc import webrtc_streamer, WebRtcMode, ClientSettings
@@ -18,10 +17,15 @@ import os
 import openai
 
 #load_dotenv()  # Load environment variables from .env file
-api_key = os.getenv("OPENAI_API_KEY")
-
-#GEMINI_API_KEY = os.getenv('GOOGLE_API_KEY')
-#genai.configure(api_key=GEMINI_API_KEY)
+with st.sidebar:
+    st.header("API Key Configuration")
+    api_key = st.text_input("Enter your OpenAI API Key:", type="password")
+    st.markdown(
+        """
+        **Note**: Your API key will not be shared or stored.
+        Get your API key from [OpenAI](https://platform.openai.com/account/api-keys).
+        """
+    )
 
 openai.api_key = api_key
 #Model Initiation
