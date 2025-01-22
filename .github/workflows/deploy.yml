@@ -1,4 +1,4 @@
-name: Deploy Streamlit App
+name: Deploy App
 
 on:
   push:
@@ -6,25 +6,28 @@ on:
       - main  # Trigger deployment on push to the main branch
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: 3.9
 
+      # Install dependencies
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Streamlit app (for testing)
+      # Run the Python app with the secret
+      - name: Run app
         env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          streamlit run Chatbot.py
+        run: python app.py
