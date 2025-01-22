@@ -16,21 +16,23 @@ from dotenv import load_dotenv
 import os
 import openai
 
-#load_dotenv()  # Load environment variables from .env file
+# Sidebar for API Key Input
 with st.sidebar:
     st.header("API Key Configuration")
+    # Input field for API key
     api_key = st.text_input("Enter your OpenAI API Key:", type="password")
-    st.markdown(
-        """
-        **Note**: Your API key will not be shared or stored.
-        Get your API key from [OpenAI](https://platform.openai.com/account/api-keys).
-        """
-    )
+    # Button to submit the API key
+    if st.button("Submit API Key"):
+        if api_key:
+            st.session_state["api_key"] = api_key  # Store the key in session state
+            st.success("API key submitted successfully!")
+        else:
+            st.warning("Please enter a valid API key.")
 
-openai.api_key = api_key
-#Model Initiation
+# Check if API key is provided
+if "api_key" in st.session_state and st.session_state["api_key"]:
+    openai.api_key = st.session_state["api_key"]
 
-#model= genai.GenerativeModel("gemini-1.5-flash")
 
 def getResponse(user_input):
     #response=model.generate_content(user_input)
