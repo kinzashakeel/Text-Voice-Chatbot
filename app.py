@@ -21,6 +21,11 @@ with st.sidebar:
     st.header("API Key Configuration")
     # Input field for API key
     api_key = st.text_input("Enter your OpenAI API Key:", type="password")
+    
+    # Initialize "api_key" in session state if not already present
+    if "api_key" not in st.session_state:
+        st.session_state["api_key"] = None  # Set default value
+    
     # Button to submit the API key
     if st.button("Submit API Key"):
         if api_key:
@@ -30,7 +35,7 @@ with st.sidebar:
             st.warning("Please enter a valid API key.")
 
 # Check if API key is provided
-if "api_key" in st.session_state and st.session_state["api_key"]:
+if st.session_state["api_key"]:
     openai.api_key = st.session_state["api_key"]
 
 
