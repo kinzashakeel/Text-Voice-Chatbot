@@ -25,7 +25,7 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 
 #model= genai.GenerativeModel("gemini-1.5-flash")
 headers = {
-    "authorization":st.secrets["auth_token"],
+    "authorization":st.secrets["OPENAI_API_KEY"],
     "content-type":"application/json"
 }
 
@@ -183,5 +183,6 @@ def main():
 if __name__ == "__main__":
     main()
     
+
 
 
