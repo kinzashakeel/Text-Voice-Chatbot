@@ -22,7 +22,7 @@ genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 openai.api_key = os.getenv('OPENAI_API_KEY')
 #Model Initiation
 
-model= genai.GenerativeModel("gemini-1.5-flash")
+model= genai.GenerativeModel("gemini-2.5-flash")
 
 
 def getResponse(user_input):
@@ -165,6 +165,7 @@ def main():
 if __name__ == "__main__":
     main()
     
+
 
 
 
