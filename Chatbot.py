@@ -17,36 +17,17 @@ from dotenv import load_dotenv
 import os
 import openai
 
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
-GEMINI_API_KEY = "AIzaSyAKIq-OXzVZC7lTYtnZMdDFqiHDQ_a3L3o"
-genai.configure(api_key="AIzaSyAKIq-OXzVZC7lTYtnZMdDFqiHDQ_a3L3o")
 openai.api_key = os.getenv('OPENAI_API_KEY')
 #Model Initiation
 
-#model= genai.GenerativeModel("gemini-1.5-flash")
-headers = {
-    "authorization":st.secrets["OPENAI_API_KEY"],
-    "content-type":"application/json"
-}
+model= genai.GenerativeModel("gemini-1.5-flash")
+
 
 def getResponse(user_input):
 
-    test_messages = []
-
-    system_message = "First ask user about country and language preference for chatting. we have only two options 1. English and 2. Urdu. Whichever language user selects, only reply in that language.You are a mental health support chatbot acting as a friendly therapist and psychologist and you have to do conversation with patients aasking them about their mental health issues, but do not ask too many questions, just ask 2,3 questions and give your detailed solution regarding that specific mental health problem.Don't change language by yourself until user asks to speak in that language.Continue communication in same language.Don't say anything unnecessary. Do not repeat any question again. If user input is in English reply in English, if user input is in Urdu Language then only reply in Urdu Language Otherwise only use English Language by default. Just reply like a human psychologist.Reply detailed satisfactory answers in both languages. If same qustions is asked again, try to answer with different wordings but the context of the question and answer should be retained.Also, make output responses shorter upto 100 words at maximum. Like humans do chatting. If you do not understand user input, just say nicely to user to repeat the question again. Do not answer questions outside the domain of mental health. Avoid question having keywords like suicide, just refer the user to online links to book appointment with a psychologist."
-    test_messages.append({"role": "system", "content": system_message})
-       
-
-    test_messages.append({"role": "system", "content": user_input})
-        #OpenAI Chat Completions
-    response = openai.ChatCompletion.create(
-                #model='ft:gpt-4o-mini-2024-07-18:sukkur-iba:mentalhealth:AGTajjiH', #can test it against gpt-3.5-turbo to see difference
-                model= "gpt-5",
-                messages=test_messages,
-                temperature=1,
-                max_completion_tokens=500
-        )
-    return response["choices"][0]["message"]["content"]
+   
     
 import tempfile
 
@@ -183,6 +164,7 @@ def main():
 if __name__ == "__main__":
     main()
     
+
 
 
 
